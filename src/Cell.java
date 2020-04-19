@@ -2,6 +2,10 @@ public class Cell {
     private int livingNeighbours;
     private boolean alive;
 
+    public Cell(boolean alive) {
+        this.alive = alive;
+    }
+
     void update() {
         if (alive) {
             if (livingNeighbours < 2 || livingNeighbours > 3) {
