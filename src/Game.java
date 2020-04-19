@@ -18,6 +18,18 @@ public class Game {
         }
     }
 
+    void update(){
+        for (int x = 0; x < SIZE; x++) {
+            for (int y = 0; y < SIZE; y++) {
+                if (x != 0 && x != SIZE - 1 && y != 0 && y != SIZE - 1) {
+                    cells[x][y].setLivingNeighbours(countLivingNeighbours(x, y));
+                }
+
+                cells[x][y].update();
+            }
+        }
+    }
+
     private int countLivingNeighbours(int x, int y) {
         int result = 0;
 
