@@ -4,6 +4,20 @@ public class Game {
     private final int SIZE = 20;
     private Cell[][] cells;
 
+    public Game() {
+        cells = new Cell[SIZE][SIZE];
+
+        for (int x = 0; x < SIZE; x++) {
+            for (int y = 0; y < SIZE; y++) {
+                boolean alive = false;
+                if ((int)Math.round(Math.random()) != 0) {
+                    alive = true;
+                }
+                cells[x][y] = new Cell(alive);
+            }
+        }
+    }
+
     private int countLivingNeighbours(int x, int y) {
         int result = 0;
 
@@ -13,6 +27,10 @@ public class Game {
                     result++;
                 }
             }
+        }
+
+        if (cells[x][y].isAlive()) {
+            result--;
         }
 
         return result;
